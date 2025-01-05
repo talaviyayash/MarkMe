@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import db from "./db.js";
 import cors from "cors";
-import user from "./router/user.route.js";
+import auth from "./router/auth.route.js";
 
 dotenv.config();
 db();
@@ -15,7 +15,7 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-app.use("/", user);
+app.use("/auth", auth);
 
 app?.listen(process.env.PORT, () => {
   console.log("server is running on " + process.env.PORT);
