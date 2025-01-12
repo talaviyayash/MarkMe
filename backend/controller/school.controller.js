@@ -7,7 +7,6 @@ const createSchool = async (req, res) => {
   let userInfo = await User.findOne({ email: principalEmail });
 
   if (userInfo?.school) {
-    console.log("called");
     return res.status(409).send({
       success: false,
       message: "User already associated with another school.",

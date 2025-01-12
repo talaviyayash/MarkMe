@@ -1,12 +1,12 @@
 import { Box, Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import CreateClasses from "./createClasses/CreateClasses";
 import { changeModal } from "../../../redux/slice/modalSlice";
+import AdminCreateSchool from "./adminCreateSchool/AdminCreateSchool";
 
-const Classes = () => {
+const AdminSchool = () => {
   const dispatch = useDispatch();
-  const classesModal = useSelector((state) => state?.modal?.createClasses);
-  const toggleModal = () => dispatch(changeModal({ name: "createClasses" }));
+  const createSchoolModal = useSelector((state) => state?.modal?.createSchool);
+  const toggleModal = () => dispatch(changeModal({ name: "createSchool" }));
   return (
     <>
       <Box
@@ -19,12 +19,12 @@ const Classes = () => {
           variant="contained"
           onClick={toggleModal}
         >
-          Create Classes
+          Create School
         </Button>
-        {classesModal && <CreateClasses />}
+        {createSchoolModal && <AdminCreateSchool />}
       </Box>
     </>
   );
 };
 
-export default Classes;
+export default AdminSchool;

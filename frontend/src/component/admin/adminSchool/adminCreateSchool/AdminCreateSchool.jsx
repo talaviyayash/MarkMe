@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
+import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { changeModal } from "../../../../redux/slice/modalSlice";
-import CreateSchoolPresentation from "./CreateSchoolPresentation";
-import { useForm } from "react-hook-form";
+import AdminCreateSchoolPresentation from "./AdminCreateSchoolPresentation";
 
-const CreateSchool = () => {
+const AdminCreateSchool = () => {
   const dispatch = useDispatch();
   const createSchoolModal = useSelector((state) => state?.modal?.createSchool);
   const toggleModal = () => dispatch(changeModal({ name: "createSchool" }));
@@ -28,7 +28,7 @@ const CreateSchool = () => {
     console.log("data", data);
   };
   return (
-    <CreateSchoolPresentation
+    <AdminCreateSchoolPresentation
       {...{
         createSchoolModal,
         toggleModal,
@@ -41,4 +41,4 @@ const CreateSchool = () => {
   );
 };
 
-export default CreateSchool;
+export default AdminCreateSchool;

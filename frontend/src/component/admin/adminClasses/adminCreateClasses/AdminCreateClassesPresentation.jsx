@@ -1,7 +1,7 @@
 import { Stack } from "@mui/material";
 import MUIModal from "../../../../shared/MUIModal";
 
-const CreateClassesPresentation = ({ classesModal, toggleModal }) => {
+const AdminCreateClassesPresentation = ({ classesModal, toggleModal }) => {
   return (
     <>
       <MUIModal open={classesModal} onClose={toggleModal}>
@@ -11,4 +11,4 @@ const CreateClassesPresentation = ({ classesModal, toggleModal }) => {
   );
 };
 
-export default CreateClassesPresentation;
+export default AdminCreateClassesPresentation;

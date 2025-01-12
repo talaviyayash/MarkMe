@@ -33,7 +33,7 @@ const userInfo = async (req, res) => {
   return res.status(200).send({
     success: true,
     message: "User information retrieved successfully",
-    data: result,
+    data: result?.[0],
   });
 };
 

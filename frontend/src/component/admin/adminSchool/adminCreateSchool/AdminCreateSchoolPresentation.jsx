@@ -2,7 +2,7 @@ import { Button, Grid2 as Grid, TextField } from "@mui/material";
 import { Controller } from "react-hook-form";
 import MUIModal from "../../../../shared/MUIModal";
 
-const CreateSchoolPresentation = ({
+const AdminCreateSchoolPresentation = ({
   createSchoolModal,
   toggleModal,
   control,
@@ -166,4 +166,4 @@ const CreateSchoolPresentation = ({
   );
 };
 
-export default CreateSchoolPresentation;
+export default AdminCreateSchoolPresentation;

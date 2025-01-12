@@ -44,6 +44,7 @@ userSchema.methods.generateToken = async function () {
     {
       _id: this._id,
       email: this.email,
+      role: this.role,
     },
     process.env.TOKEN_SECRET,
     {

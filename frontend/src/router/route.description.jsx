@@ -4,9 +4,9 @@ import SignUp from "../component/auth/signup/SignUp";
 import Layout from "../component/layout/Layout";
 import ProtectedRoute from "../routes/ProtectedRoute";
 import PublicRoute from "../routes/PublicRoute";
-import AdminDashboard from "../component/admin/dashboard/Dashboard";
-import AdminClasses from "../component/admin/classes/Classes";
-import AdminSchool from "../component/admin/school/School";
+import AdminDashboard from "../component/admin/adminDashboard/AdminDashboard";
+import AdminClasses from "../component/admin/adminClasses/AdminClasses";
+import AdminSchool from "../component/admin/adminSchool/AdminSchool";
 
 export const routes = [
   {
@@ -60,7 +60,9 @@ const adminRout = [
 ];
 
 export const getRoleBasedRoute = (role) => {
+  console.log("role", role);
   if (role === "admin") {
     return adminRout;
   }
+  return [];
 };

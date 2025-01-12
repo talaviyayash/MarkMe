@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
-import CreateClassesPresentation from "./CreateClassesPresentation";
 import { changeModal } from "../../../../redux/slice/modalSlice";
+import AdminCreateClassesPresentation from "./AdminCreateClassesPresentation";
 
-const CreateClasses = () => {
+const AdminCreateClasses = () => {
   const dispatch = useDispatch();
   const classesModal = useSelector((state) => state?.modal?.createClasses);
   const toggleModal = () => dispatch(changeModal({ name: "createClasses" }));
   return (
-    <CreateClassesPresentation
+    <AdminCreateClassesPresentation
       {...{
         classesModal,
         toggleModal,
@@ -16,4 +16,4 @@ const CreateClasses = () => {
   );
 };
 
-export default CreateClasses;
+export default AdminCreateClasses;
