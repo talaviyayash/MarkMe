@@ -1,27 +1,8 @@
 import { useRoutes } from "react-router-dom";
-import Layout from "../component/layout/Layout";
-import SignIn from "../component/auth/signin/SignIn";
-import SignUp from "../component/auth/signup/SignUp";
-
-const publicRoute = [
-  {
-    element: <Layout />,
-    path: "/",
-    children: [
-      {
-        element: <SignIn />,
-        path: "/signin",
-      },
-      {
-        element: <SignUp />,
-        path: "/signup",
-      },
-    ],
-  },
-];
+import { getRoleBasedRoute, routes } from "./route.description";
 
 const Route = () => {
-  const allRoute = useRoutes(publicRoute);
+  const allRoute = useRoutes([...routes, ...getRoleBasedRoute("admin")]);
   return allRoute;
 };
 

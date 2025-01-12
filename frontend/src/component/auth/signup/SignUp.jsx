@@ -1,5 +1,7 @@
 import { Button, Stack, styled, TextField, Typography } from "@mui/material";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import useApiHook from "../../../hook/useApiHook";
 
 const StyledContainer = styled(Stack)(() => ({
   height: "calc( 100vh - 64px)",
@@ -21,10 +23,22 @@ const SignUp = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({ mode: "onChange" });
+  const navigate = useNavigate();
+  const { api } = useApiHook();
 
-  // Handle form submission
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    const response = await api({
+      endPoint: "/auth/signup",
+      method: "POST",
+      needLoader: true,
+      showToast: true,
+      loaderName: "signup",
+      data,
+    });
+    if (response?.success) {
+      localStorage.setItem("token", response?.data?.token);
+      navigate("/dashboard");
+    }
   };
 
   return (
@@ -56,22 +70,6 @@ const SignUp = () => {
           {...register("name", { required: "Name is required" })}
           error={!!errors.name}
           helperText={errors.name?.message}
-        />
-        <TextField
-          id="phoneNumber"
-          label="Phone Number"
-          variant="outlined"
-          fullWidth
-          margin="normal"
-          {...register("phoneNumber", {
-            required: "Phone Number is required",
-            pattern: {
-              value: /^[0-9]{10}$/,
-              message: "Phone number must be 10 digits",
-            },
-          })}
-          error={!!errors.phoneNumber}
-          helperText={errors.phoneNumber?.message}
         />
         <TextField
           id="password"

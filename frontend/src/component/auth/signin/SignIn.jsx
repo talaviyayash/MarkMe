@@ -1,5 +1,7 @@
 import { Button, Stack, styled, TextField, Typography } from "@mui/material";
 import { useForm } from "react-hook-form";
+import useApiHook from "../../../hook/useApiHook";
+import { useNavigate } from "react-router-dom";
 
 const StyledContainer = styled(Stack)(() => ({
   height: "calc( 100vh - 64px)",
@@ -23,10 +25,23 @@ const SignIn = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({ mode: "onChange" });
+  const navigate = useNavigate();
+  const { api } = useApiHook();
 
   // Handle form submission
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    const response = await api({
+      endPoint: "/auth/singin",
+      method: "POST",
+      needLoader: true,
+      showToast: true,
+      loaderName: "signin",
+      data,
+    });
+    if (response?.success) {
+      localStorage.setItem("token", response?.data?.token);
+      navigate("/dashboard");
+    }
   };
 
   return (

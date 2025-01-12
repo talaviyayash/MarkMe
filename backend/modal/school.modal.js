@@ -4,11 +4,31 @@ const schoolSchema = new mongoose.Schema(
   {
     name: {
       type: String,
+      required: true,
       trim: true,
     },
-    principal: {
+    principalId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User", // Reference to the 'User' model
+      ref: "Principal",
+      required: true,
+    },
+    address: {
+      street: {
+        type: String,
+        trim: true,
+      },
+      city: {
+        type: String,
+        trim: true,
+      },
+      state: {
+        type: String,
+        trim: true,
+      },
+      zipCode: {
+        type: String,
+        trim: true,
+      },
     },
   },
   {
@@ -16,6 +36,6 @@ const schoolSchema = new mongoose.Schema(
   }
 );
 
-const schema = mongoose.model("School", schoolSchema);
+const School = mongoose.model("School", schoolSchema);
 
-export default schema;
+export default School;

@@ -10,9 +10,7 @@ const userSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ["admin", "teacher", "student"],
-      default: "student",
-      required: true,
+      enum: ["admin", "teacher", "student", "principal"],
     },
     email: {
       type: String,
@@ -21,6 +19,10 @@ const userSchema = new mongoose.Schema(
     },
     password: {
       type: String,
+    },
+    school: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "School",
     },
   },
   {

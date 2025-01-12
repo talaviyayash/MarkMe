@@ -13,6 +13,7 @@ import { NavLink } from "react-router-dom";
 // Define the Navbar component
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const token = localStorage.getItem("token");
 
   const handleMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -22,10 +23,16 @@ const Navbar = () => {
     setAnchorEl(null);
   };
 
-  const menuItems = [
-    { name: "Sign In", path: "/signin" },
-    { name: "Sign Up", path: "/signup" },
-  ];
+  const menuItems = token
+    ? [
+        { name: "Dashboard", path: "/dashboard" },
+        { name: "Classes", path: "/classes" },
+        { name: "school", path: "/school" },
+      ]
+    : [
+        { name: "Sign In", path: "/signin" },
+        { name: "Sign Up", path: "/signup" },
+      ];
 
   return (
     <AppBar position="static" color="primary">
